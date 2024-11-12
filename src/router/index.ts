@@ -5,7 +5,7 @@ import Hello from '../views/Hello.vue'
 const routes: Array<RouteRecordRaw> = [
   // {
   //   path: '/',
-  //   redirect: '/home' // 重定向
+  //   redirect: '/home-view' // 重定向
   // },
   {
     path: '/home-view',
