@@ -1,4 +1,6 @@
 # vue3-ds
+* 项目介绍
+- 主要用于整理日常资料 or 介绍
 
 ## Project setup
 ```
