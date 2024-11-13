@@ -1,5 +1,6 @@
 <template>
   <router-link to="/edition1th">第一版原型图</router-link>
+  <Button type="primary">Primary</Button>
   <section class="home-boxs">
     <h1>主页 / 列表</h1>
     <hr>
