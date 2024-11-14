@@ -3,6 +3,8 @@
     <router-link to="/home">Home</router-link> |
     <router-link to="/about">About</router-link>
   </nav> -->
+  <!-- 作者 -->
+  <a class="author" href="https://ye9060.com/ye" target="_blank">@小叶</a>
   <Hello />
   <router-view />
 </template>
@@ -33,11 +35,24 @@ export default defineComponent({
 //   }
 // }
 
+/* -作者- */
+.author {
+  position: fixed;
+  bottom: 20px;
+  right: 28px;
+  font-size: 18px;
+  color: #2c3e50;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+}
+
+li {
+  list-style: none;
 }
 
 html,

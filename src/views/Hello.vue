@@ -1,44 +1,47 @@
 <template>
   <!-- <router-link to="/edition1th">第一版原型图</router-link> -->
   <section class="home-boxs">
+    <!-- 展示内容 -->
     <h1>主页 / 列表</h1>
-
     <hr>
     <ol>
-      <li @click="openChildModal">
-        <span>1.</span>
-        <a>第一版原型图</a>
+      <li @click="openChildModal(work.name)" v-for="(work, index) in workingData" :key="index">
+        <span>{{ index + 1 }}.</span>
+        <div class="cboxs">
+          <a>{{ work.name }}</a>
+          <span class="time">{{ work.time }}</span>
+        </div>
       </li>
-      <!-- <li>
-        <span>2.</span>
-        <a>第一版</a>
-      </li> -->
-      <!-- <li>
-        <span>3.</span>
-        <a>第一版</a>
-      </li> -->
-      <!-- <li>
-        <span>4.</span>
-        <a>第一版</a>
-      </li> -->
     </ol>
 
-    <Edition1th ref="modalComponent" />
+    <!-- 组件 -->
+    <Edition1th ref="modalEdition1th" />
+    <Edition2th ref="modalEdition2th" />
   </section>
 </template>
 
 <script setup>
 import { ref } from 'vue';
 import Edition1th from './design/Edition1th.vue'
+import Edition2th from './design/Edition2th.vue'
 
-const modalComponent = ref(null);
+const modalEdition1th = ref(null);
+const modalEdition2th = ref(null);
+const workingData = [
+  { name: '第一版原型图', time: '2024/11/08' },
+  { name: '第二版原型图', time: '2024/11/15' }
+];
 
-function openChildModal() {
-  modalComponent.value?.toggleModal();
+function openChildModal(workName) {
+  // modalEdition1th.value?.toggleModal(workName);
+  if (workName === '第一版原型图') {
+    modalEdition1th.value?.toggleModal(workName);
+  } else if (workName === '第二版原型图') {
+    modalEdition2th.value?.toggleModal(workName);
+  }
 }
 
 </script>
-
 
 
 <style lang="less" scoped>
@@ -61,6 +64,7 @@ function openChildModal() {
     padding: 20px 80px 20px 40px;
 
     li {
+      box-sizing: border-box;
       width: 100%;
       height: 100%;
       border-radius: 4px;
@@ -82,10 +86,20 @@ function openChildModal() {
         /* font-weight: 600; */
       }
 
+      .cboxs {
+        width: calc(100% - 97px);
+        display: flex;
+        justify-content: space-between;
+
+        .time {
+          font-size: 16px;
+        }
+      }
+
       a {
         display: inline-block;
         padding: 20px;
-        width: 100%;
+        // width: 100%;
         height: 100%;
         letter-spacing: 0.15em;
         font-weight: 600;
