@@ -3,10 +3,12 @@
     <div class="boxs">
       <ul class="imgboxs">
         <li v-for="(image, index) in images" :key="image.id" :id="image.id + titleName">
-          <div v-if="image.text" class="textbox">
-            <div class="text">{{ image.text }}</div>
+          <div class="lis-box">
+            <div v-if="image.text" class="textbox">
+              <div class="text">{{ image.text }}</div>
+            </div>
+            <Image class="img" :src="image.src" fit="cover" width="100%" height="100%" />
           </div>
-          <Image class="img" :src="image.src" fit="cover" width="100%" height="100%" />
         </li>
       </ul>
 
@@ -31,13 +33,17 @@
 import { ref, defineExpose } from 'vue';
 
 const titleName = ref('汇总');
-const isVisible = ref(false);
+const isVisible = ref(true);
 
 // 图片和链接数据
 const images = ref([
   { id: 'begin', text: '', name: '首页', src: require('../../assets/images/design/edition1th/begin.jpg') },
-  { id: 'img01', text: '医生端 - 调整后的界面 - 列表隐藏', name: '界面1 - 收起', src: require('../../assets/images/design/edition2th/01.jpg') },
-  { id: 'img02', text: '医生端 - 调整后的界面 - 列表显示', name: '界面2 - 展开', src: require('../../assets/images/design/edition2th/02.jpg') },
+  { id: 'img1-1', text: '医生端 - 调整后的界面1 - 列表隐藏', name: '版式1 - 列表收起', src: require('../../assets/images/design/edition2th/1-1.jpg') },
+  { id: 'img1-2', text: '医生端 - 调整后的界面1 - 列表显示', name: '版式1 - 列表展开', src: require('../../assets/images/design/edition2th/1-2.jpg') },
+  { id: 'img1-3', text: '医生端 - 调整后的界面1 - 完整视图', name: '版式1 - 完整视图', src: require('../../assets/images/design/edition2th/1-3.jpg') },
+  { id: 'img2-1', text: '医生端 - 调整后的界面2 - 列表隐藏', name: '版式2 - 列表收起', src: require('../../assets/images/design/edition2th/2-1.jpg') },
+  { id: 'img2-2', text: '医生端 - 调整后的界面2 - 列表显示', name: '版式2 - 列表展开', src: require('../../assets/images/design/edition2th/2-2.jpg') },
+  { id: 'img2-3', text: '医生端 - 调整后的界面2 - 完整视图', name: '版式2 - 完整视图', src: require('../../assets/images/design/edition2th/2-3.jpg') },
 ]);
 
 const selectedIndex = ref(0);
@@ -94,7 +100,7 @@ defineExpose({
 
   a {
     color: rgba(0, 0, 0, 0.7);
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .lis {
@@ -114,11 +120,29 @@ defineExpose({
 
 .imgboxs {
   width: 80%;
+  margin-left: 12px;
 
   li {
+    padding-top: 16px;
+
+    &:first-child {
+      padding-top: 8px;
+    }
+  }
+
+  .lis-box {
     margin-bottom: 20px;
-    border: 1px solid #1b2164;
+    border: 1px solid #673ab7;
     background-color: #fff;
+    box-shadow: 4px 5px 10px 0 rgba(123, 116, 133, 0.3);
+    transition: all .3s;
+
+    &:hover {
+      border: 2px solid #2b1b8f;
+      box-shadow: 0px 0px 10px 8px rgba(123, 116, 133, 0.9);
+      transform: scale(1.04);
+      z-index: 2;
+    }
 
     // &:first-child {
     //   padding-top: 0;
@@ -126,7 +150,7 @@ defineExpose({
   }
 
   .img {
-    border: 1px solid #1b2164;
+    border: 1px solid #3f51b5;
     transform: scale(.9);
   }
 
@@ -135,6 +159,10 @@ defineExpose({
     font-weight: bold;
     margin-top: 20px;
     margin-left: 24px;
+
+    .text {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    }
   }
 }
 </style>
