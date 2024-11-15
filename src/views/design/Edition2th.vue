@@ -33,7 +33,7 @@
 import { ref, defineExpose } from 'vue';
 
 const titleName = ref('汇总');
-const isVisible = ref(true);
+const isVisible = ref(false);
 
 // 图片和链接数据
 const images = ref([
