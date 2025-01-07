@@ -2,7 +2,7 @@
   <!-- <router-link to="/edition1th">第一版原型图</router-link> -->
   <section class="home-boxs">
     <div class="bgbox">
-      <img class="bgimg" src="../assets/images/bg-6.jpg" alt="">
+      <!-- <img class="bgimg" src="../assets/images/bg-6.jpg" alt=""> -->
     </div>
     <!-- 展示内容 -->
     <h1>目录</h1>
@@ -79,6 +79,8 @@ function openChildModal(workName) {
     position: absolute;
     top: 0;
     left: 0;
+    background-image: url('../assets/images/bg-6.jpg');
+    // background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -89,8 +91,9 @@ function openChildModal(workName) {
   }
 
   .bgimg {
-    width: 100%;
-    transform: scale(1.02);
+    // width: 100%;
+    // height: 100%;
+    // transform: scale(1.02);
     // filter: blur(7px);
   }
 
