@@ -3,9 +3,9 @@
     <div class="objective">
       <h3>设计目标: </h3>
       <ul>
-        <li>默认隐藏：侧边列表初始状态下隐藏，以减少界面占用空间。</li>
-        <li>交互性：用户通过点击按钮来显示和隐藏侧边列表。</li>
-        <li>按钮高亮：按钮点击时高亮显示，提供视觉反馈，提示当前列表显示状态。</li>
+        <li>固定位置：将力度显示条固定在视频大窗口的右上方位置，确保其在界面中始终可见。</li>
+        <li>视频切换：点击左侧视频小窗口时，切换视频源，但力度显示条保持固定并继续显示，不受切换视频的影响。</li>
+        <li>力度显示：力度条的颜色会根据视频的力度数据动态调整，用户能够清晰地看到当前视频的力度状态。</li>
       </ul>
     </div>
     <div class="boxs">
@@ -26,7 +26,7 @@
           <li v-for="(image, index) in images" :key="image.id">
             <div class="lis">
               <span class="dot" v-if="selectedIndex === index"></span>
-              <a v-if="image.name" :href="`#${image.id + titleName}`" :class="{ active: selectedIndex === index }"
+              <a :href="`#${image.id + titleName}`" :class="{ active: selectedIndex === index }"
                 @click="selectItem(index)">
                 {{ `${index + 1}. ${image.name}` }}
               </a>
@@ -36,14 +36,14 @@
       </div>
     </div>
 
-    <div class="objective">
+    <!-- <div class="objective">
       <h3>交互效果说明: </h3>
       <ul>
-        <li>默认情况下，侧边列表隐藏，按钮显示为"灰色"。</li>
-        <li>用户点击按钮后，侧边列表显示并且按钮变为高亮状态，显示为"蓝色"。</li>
-        <li>再次点击按钮时，侧边列表隐藏，按钮取消高亮状态，恢复为"灰色"。</li>
+        <li>初始状态下，视频显示区域右上方有一个力度显示条。</li>
+        <li>用户点击左侧小视频窗口，切换到对应的视频，同时力度显示条更新为新视频的力度，但位置始终固定在右上方，不会随视频切换而移动。</li>
+        <li>力度条的颜色会根据视频的力度数据动态调整，用户能够清晰地看到当前视频的力度状态。</li>
       </ul>
-    </div>
+    </div> -->
   </Modal>
 </template>
 
@@ -56,10 +56,8 @@ const isVisible = ref(false);
 // 图片和链接数据
 const images = ref([
   // { id: 'begin', text: '', name: '首页', src: require('../../assets/images/design/edition1th/begin.jpg') },
-  { id: 'img1-1', text: '优化前界面', label: '', name: '优化前', src: require('../../assets/images/design/edition3th/1-1.png') },
-  { id: 'img3-1', text: '优化后界面', label: '（默认情况下，侧边列表隐藏，按钮显示为"灰色"）', name: '优化后-默认状态', src: require('../../assets/images/design/edition3th/3-1.jpg') },
-  { id: 'img3-2', text: '', label: '（用户点击按钮后，侧边列表显示并且按钮变为高亮状态，显示为"蓝色"）', name: '优化后-用户点击', src: require('../../assets/images/design/edition3th/3-2.jpg') },
-  { id: 'img3-3', text: '', label: '（再次点击按钮时，侧边列表隐藏，按钮取消高亮状态，恢复为"灰色"）', name: '优化后-再次点击', src: require('../../assets/images/design/edition3th/3-1.jpg') },
+  { id: 'img1-1', text: '优化前界面', label: '', name: '优化前', src: require('../../assets/images/design/edition4th/1-1.png') },
+  { id: 'img3-1', text: '优化后界面', label: '', name: '优化后-图1', src: require('../../assets/images/design/edition3th/3-1.jpg') },
 ]);
 
 const selectedIndex = ref(0);

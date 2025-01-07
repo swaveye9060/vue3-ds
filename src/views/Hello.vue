@@ -1,7 +1,9 @@
 <template>
   <!-- <router-link to="/edition1th">第一版原型图</router-link> -->
   <section class="home-boxs">
-    <img class="bgimg" src="../assets/images/bg-4.jpg" alt="">
+    <div class="bgbox">
+      <img class="bgimg" src="../assets/images/bg-6.jpg" alt="">
+    </div>
     <!-- 展示内容 -->
     <h1>目录</h1>
     <hr>
@@ -19,6 +21,7 @@
     <Edition1th ref="modalEdition1th" />
     <Edition2th ref="modalEdition2th" />
     <Edition3th ref="modalEdition3th" />
+    <Edition4th ref="modalEdition4th" />
   </section>
 </template>
 
@@ -27,14 +30,17 @@ import { ref } from 'vue';
 import Edition1th from './design/Edition1th.vue'
 import Edition2th from './design/Edition2th.vue'
 import Edition3th from './design/Edition3th.vue'
+import Edition4th from './design/Edition4th.vue'
 
 const modalEdition1th = ref(null);
 const modalEdition2th = ref(null);
 const modalEdition3th = ref(null);
+const modalEdition4th = ref(null);
 const workingData = [
   // { name: '第一版原型图', time: '2024/11/08' },
   // { name: '第二版原型图', time: '2024/11/15' },
   { name: '方案: 界面侧边列表优化', time: ' ', writingTime: '2025/1/3' },
+  { name: '方案: 界面提取探头下压力度显示条', time: ' ', writingTime: '2025/1/7' },
 ];
 
 function openChildModal(workName) {
@@ -45,6 +51,8 @@ function openChildModal(workName) {
     modalEdition2th.value?.toggleModal(workName);
   } else if (workName === '方案: 界面侧边列表优化') {
     modalEdition3th.value?.toggleModal(workName);
+  } else if (workName === '方案: 界面提取探头下压力度显示条') {
+    modalEdition4th.value?.toggleModal(workName);
   }
 }
 
@@ -66,14 +74,24 @@ function openChildModal(workName) {
   // filter: blur(5px);
   // display: none;
 
-  .bgimg {
+
+  .bgbox {
     position: absolute;
     top: 0;
     left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100%;
     z-index: -1;
-    filter: blur(7px);
+    overflow: hidden;
+  }
+
+  .bgimg {
+    width: 100%;
+    transform: scale(1.02);
+    // filter: blur(7px);
   }
 
   h1 {
@@ -96,7 +114,7 @@ function openChildModal(workName) {
       display: flex;
       background: linear-gradient(-45deg, rgba(0, 136, 255, 0.3), rgba(69, 42, 203, 0.3));
       // box-shadow: 4px 5px 10px 0 rgba(123, 116, 133, 0.3);
-      box-shadow: 4px 5px 10px 0 rgba(104, 58, 183, 0.7);
+      // box-shadow: 4px 5px 10px 0 rgba(104, 58, 183, 0.7);
       margin-bottom: 20px;
       cursor: pointer;
 
@@ -131,10 +149,11 @@ function openChildModal(workName) {
       }
 
       &:hover {
-        background: linear-gradient(-45deg, #0089ff, #54fbdd, #442acb);
+        // background: linear-gradient(-45deg, #0089ff, #54fbdd, #442acb);
+        background: linear-gradient(-45deg, #078ff0, #0c0530, #4c30d7);
         background-size: 200% 200%;
-        animation: moiveAnimation 8s infinite;
-        box-shadow: 5px 6px 10px 0 rgba(123, 116, 133, 0.7);
+        animation: moiveAnimation 4.2s infinite;
+        // box-shadow: 5px 6px 10px 0 rgba(123, 116, 133, 0.7);
 
         span {
           color: #fff;
