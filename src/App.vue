@@ -4,7 +4,7 @@
     <router-link to="/about">About</router-link>
   </nav> -->
   <!-- 作者 -->
-  <a class="author" href="https://ye9060.com/ye" target="_blank">@小叶</a>
+  <a class="author" href="https://ye9060.com/ye" target="_blank">叶</a>
   <Hello />
   <router-view />
 </template>

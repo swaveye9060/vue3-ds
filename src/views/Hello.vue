@@ -1,8 +1,9 @@
 <template>
   <!-- <router-link to="/edition1th">第一版原型图</router-link> -->
   <section class="home-boxs">
+    <img class="bgimg" src="../assets/images/bg-4.jpg" alt="">
     <!-- 展示内容 -->
-    <h1>主页 / 列表</h1>
+    <h1>目录</h1>
     <hr>
     <ol>
       <li @click="openChildModal(work.name)" v-for="(work, index) in workingData" :key="index">
@@ -17,6 +18,7 @@
     <!-- 组件 -->
     <Edition1th ref="modalEdition1th" />
     <Edition2th ref="modalEdition2th" />
+    <Edition3th ref="modalEdition3th" />
   </section>
 </template>
 
@@ -24,12 +26,15 @@
 import { ref } from 'vue';
 import Edition1th from './design/Edition1th.vue'
 import Edition2th from './design/Edition2th.vue'
+import Edition3th from './design/Edition3th.vue'
 
 const modalEdition1th = ref(null);
 const modalEdition2th = ref(null);
+const modalEdition3th = ref(null);
 const workingData = [
-  { name: '第一版原型图', time: '2024/11/08' },
-  { name: '第二版原型图', time: '2024/11/15' }
+  // { name: '第一版原型图', time: '2024/11/08' },
+  // { name: '第二版原型图', time: '2024/11/15' },
+  { name: '方案: 界面侧边列表优化', time: ' ', writingTime: '2025/1/3' },
 ];
 
 function openChildModal(workName) {
@@ -38,6 +43,8 @@ function openChildModal(workName) {
     modalEdition1th.value?.toggleModal(workName);
   } else if (workName === '第二版原型图') {
     modalEdition2th.value?.toggleModal(workName);
+  } else if (workName === '方案: 界面侧边列表优化') {
+    modalEdition3th.value?.toggleModal(workName);
   }
 }
 
@@ -46,17 +53,33 @@ function openChildModal(workName) {
 
 <style lang="less" scoped>
 .home-boxs {
+  position: relative;
   width: 100%;
   height: 100vh;
   font-size: 18px;
-  background-image: url('https://ye9060.com/uploads/feb957d9-5f57-4d99-b154-e2b3538c9727-bg-1920-01.jpg');
-  background-size: cover;
+  color: rgba(255, 255, 255, 0.9);
+  // background-image: url('https://ye9060.com/uploads/feb957d9-5f57-4d99-b154-e2b3538c9727-bg-1920-01.jpg');
+  // background-image: url('../assets/images/bg-3.jpg');
+  // background-size: cover;
+
+  // backdrop-filter: blur(3px);
+  // filter: blur(5px);
   // display: none;
+
+  .bgimg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    filter: blur(7px);
+  }
 
   h1 {
     margin: 0;
     padding: 22px 20px;
-    font-size: 32px;
+    font-size: 28px;
     /* border: 1px solid #000; */
   }
 
@@ -72,7 +95,8 @@ function openChildModal(workName) {
       list-style: none;
       display: flex;
       background: linear-gradient(-45deg, rgba(0, 136, 255, 0.3), rgba(69, 42, 203, 0.3));
-      box-shadow: 4px 5px 10px 0 rgba(123, 116, 133, 0.3);
+      // box-shadow: 4px 5px 10px 0 rgba(123, 116, 133, 0.3);
+      box-shadow: 4px 5px 10px 0 rgba(104, 58, 183, 0.7);
       margin-bottom: 20px;
       cursor: pointer;
 
@@ -103,7 +127,7 @@ function openChildModal(workName) {
         height: 100%;
         letter-spacing: 0.15em;
         font-weight: 600;
-        color: #2c3e50;
+        color: #dfdacf;
       }
 
       &:hover {
@@ -151,12 +175,14 @@ function openChildModal(workName) {
 
   from {
     /* width: 0; */
-    transform: rotateX(-90deg);
+    transform: rotateY(-90deg);
+    transform-origin: left;
   }
 
   to {
     /* width: 100%; */
-    transform: rotateX(0deg);
+    transform: rotateY(0deg);
+    // transform-origin: left;
   }
 
 }
